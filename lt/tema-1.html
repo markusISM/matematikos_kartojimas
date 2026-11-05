@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 tema. Skaičių aibės ir intervalai · Matematikos pagrindų kartojimas</title>
+<meta name="description" content="Aibės ir veiksmai su jomis, skaičių aibės N, Z, Q, I ir R, jų tarpusavio ryšiai, intervalai ir skaičių tiesė. Uždavinių sprendimo pavyzdžiai ir uždaviniai savarankiškam darbui.">
+<meta name="theme-color" content="#013916">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=3">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/js/site.js?v=3"></script>
+</head>
+<body data-page="t1">
+<noscript><p class="noscript">Kad tinklapis veiktų, naršyklėje įjunkite JavaScript.</p></noscript>
+<header id="site-header" class="site-header"></header>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="page-head">
+    <span class="eyebrow">1 tema</span>
+    <h1>Skaičių aibės ir intervalai</h1>
+    <ul class="jump">
+      <li><a href="#aibes">Aibės</a></li>
+      <li><a href="#skaiciu-aibes">Skaičių aibės</a></li>
+      <li><a href="#intervalai">Intervalai</a></li>
+      <li><a href="#pavyzdziai">Pavyzdžiai</a></li>
+      <li><a href="#savarankiskai">Savarankiškai</a></li>
+    </ul>
+  </header>
+
+  <!-- ============ AIBĖS IR VEIKSMAI SU JOMIS ============ -->
+  <section class="section" id="aibes" aria-labelledby="h-sets">
+    <h2 id="h-sets">Aibės ir veiksmai su jomis</h2>
+
+    <article class="card concept" id="aibe">
+      <div class="concept-head"><span class="num">1</span><h3>Aibė ir jos elementai</h3></div>
+      <p><strong>Aibė</strong> – pagal tam tikrą požymį apibrėžtas objektų rinkinys. Šioje temoje aibių elementai yra skaičiai. Užrašas \(3 \in A\) reiškia, kad skaičius \(3\) priklauso aibei \(A\), o \(3 \notin B\) – kad jis nepriklauso aibei \(B\). Elementai rašomi riestiniuose skliaustuose, pavyzdžiui, \(A = \{1; 2; 3\}\).</p>
+      <p><strong>Tuščioji aibė</strong> \(\varnothing\) neturi elementų. Užrašas \(A \subset B\) čia reiškia, kad \(A\) yra <strong>tikrasis</strong> aibės \(B\) <strong>poaibis</strong>: visi \(A\) elementai priklauso \(B\), bet aibės nėra lygios.</p>
+    </article>
+
+    <article class="card concept" id="veiksmai">
+      <div class="concept-head"><span class="num">2</span><h3>Sankirta, sąjunga ir skirtumas</h3></div>
+      <p><strong>Sankirta</strong> \(A \cap B\) – elementai, priklausantys <strong>abiem</strong> aibėms. <strong>Sąjunga</strong> \(A \cup B\) – elementai, priklausantys <strong>bent vienai</strong> iš jų. <strong>Skirtumas</strong> \(A \setminus B\) – elementai, priklausantys \(A\), bet nepriklausantys \(B\).</p>
+      <div class="venn3">
+        <figure>
+          <svg viewBox="0 0 120 84" role="img" aria-label="Sankirta: nuspalvinta abiem aibėms bendra dalis">
+            <defs><clipPath id="vn-cut-b"><circle cx="72" cy="46" r="28"/></clipPath></defs>
+            <circle class="vn-fill" cx="48" cy="46" r="28" clip-path="url(#vn-cut-b)"/>
+            <circle class="vn-c" cx="48" cy="46" r="28"/><circle class="vn-c" cx="72" cy="46" r="28"/>
+            <text class="vn-l" x="10" y="20">A</text><text class="vn-l" x="102" y="20">B</text>
+          </svg>
+          <figcaption>\(A \cap B\)</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 84" role="img" aria-label="Sąjunga: nuspalvintos abi aibės">
+            <circle class="vn-fill" cx="48" cy="46" r="28"/><circle class="vn-fill" cx="72" cy="46" r="28"/>
+            <circle class="vn-c" cx="48" cy="46" r="28"/><circle class="vn-c" cx="72" cy="46" r="28"/>
+            <text class="vn-l" x="10" y="20">A</text><text class="vn-l" x="102" y="20">B</text>
+          </svg>
+          <figcaption>\(A \cup B\)</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 84" role="img" aria-label="Skirtumas: nuspalvinta aibės A dalis, nepriklausanti aibei B">
+            <circle class="vn-fill" cx="48" cy="46" r="28"/><circle class="vn-bg" cx="72" cy="46" r="28"/>
+            <circle class="vn-c" cx="48" cy="46" r="28"/><circle class="vn-c" cx="72" cy="46" r="28"/>
+            <text class="vn-l" x="10" y="20">A</text><text class="vn-l" x="102" y="20">B</text>
+          </svg>
+          <figcaption>\(A \setminus B\)</figcaption>
+        </figure>
+      </div>
+      <p>Pavyzdžiui, jei \(A = \{1; 2; 3\}\) ir \(B = \{3; 4\}\), tai</p>
+      <div class="formula">\[ \begin{aligned} A \cap B &amp;= \{3\}, \\ A \cup B &amp;= \{1; 2; 3; 4\}, \\ A \setminus B &amp;= \{1; 2\}. \end{aligned} \]</div>
+      <p>Aibėje elementai nesikartoja; jų išvardijimo tvarka nesvarbi.</p>
+    </article>
+  </section>
+
+  <!-- ============ SKAIČIŲ AIBĖS ============ -->
+  <section class="section" id="skaiciu-aibes" aria-labelledby="h-numsets">
+    <h2 id="h-numsets">Skaičių aibės</h2>
+
+    <article class="card concept" id="naturalieji">
+      <div class="concept-head"><span class="num">3</span><h3>Natūralieji skaičiai</h3></div>
+      <p><strong>Natūralieji skaičiai</strong> skirti skaičiuoti daiktus. Jų aibė žymima \(\mathbb{N}\):</p>
+      <div class="formula">\[ \mathbb{N} = \{1; 2; 3; 4; \ldots\}. \]</div>
+      <p><strong>Nulis natūraliesiems skaičiams nepriskiriamas</strong>: \(0 \notin \mathbb{N}\). Kai kuriuose šaltiniuose vartojamas kitoks susitarimas. Prireikus neneigiamųjų sveikųjų skaičių aibę žymėsime \(\mathbb{N}_0 = \{0; 1; 2; 3; \ldots\}\).</p>
+    </article>
+
+    <article class="card concept" id="sveikieji">
+      <div class="concept-head"><span class="num">4</span><h3>Sveikieji skaičiai</h3></div>
+      <p><strong>Sveikieji skaičiai</strong> apima natūraliuosius skaičius, jiems priešingus skaičius ir nulį. Jų aibė žymima \(\mathbb{Z}\):</p>
+      <div class="formula">\[ \mathbb{Z} = \{\ldots; -3; -2; -1; 0; 1; 2; 3; \ldots\}. \]</div>
+      <p>Pavyzdžiui, \(-8\), \(0\) ir \(15\) yra sveikieji skaičiai, o \(0{,}5\) nėra sveikasis skaičius. Nulis nėra nei teigiamas, nei neigiamas.</p>
+    </article>
+
+    <article class="card concept" id="racionalieji">
+      <div class="concept-head"><span class="num">5</span><h3>Racionalieji skaičiai</h3></div>
+      <p><strong>Racionalieji skaičiai</strong> – skaičiai, kuriuos galima užrašyti dviejų sveikųjų skaičių dalmeniu, kai vardiklis nelygus nuliui. Jų aibė žymima \(\mathbb{Q}\):</p>
+      <div class="formula">\[ \mathbb{Q} = \left\{ \frac{a}{b} \;\middle|\; a \in \mathbb{Z},\ b \in \mathbb{Z},\ b \neq 0 \right\}. \]</div>
+      <p>Visi sveikieji skaičiai yra racionalieji, nes, pavyzdžiui, \(-5 = \frac{-5}{1}\) ir \(0 = \frac{0}{1}\). Racionalieji taip pat yra \(\frac{3}{4}\), \(-\frac{7}{2}\), \(0{,}25\) ir \(0{,}(3)\). Trupmena neprivalo būti nesuprastinama: skirtingi užrašai gali reikšti tą patį skaičių. Baigtinės ir periodinės dešimtainės trupmenos yra racionaliosios. Skliaustuose rašomas periodas: \(0{,}(3) = 0{,}333\ldots\)</p>
+    </article>
+
+    <article class="card concept" id="iracionalieji">
+      <div class="concept-head"><span class="num">6</span><h3>Iracionalieji skaičiai</h3></div>
+      <p><strong>Iracionalieji skaičiai</strong> – skaičiai, kurių negalima užrašyti dviejų sveikųjų skaičių dalmeniu. Jų dešimtainis užrašas yra begalinis ir neperiodinis. Pavyzdžiai: \(\sqrt{2}\), \(\sqrt{5}\), \(\pi\). Ši aibė žymima \(I\).</p>
+    </article>
+
+    <article class="card concept" id="realieji">
+      <div class="concept-head"><span class="num">7</span><h3>Realieji skaičiai</h3></div>
+      <p><strong>Realieji skaičiai</strong> – visi racionalieji ir iracionalieji skaičiai. Jų aibė žymima \(\mathbb{R}\). Kiekvieną realųjį skaičių atitinka vienas skaičių tiesės taškas, ir kiekvieną jos tašką – vienas realusis skaičius.</p>
+    </article>
+
+    <article class="card concept" id="rysiai">
+      <div class="concept-head"><span class="num">8</span><h3>Kaip šios aibės susijusios</h3></div>
+      <div class="formula">\[ \begin{gathered} \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}, \\ I = \mathbb{R} \setminus \mathbb{Q},\ \ \mathbb{Q} \cup I = \mathbb{R},\ \ \mathbb{Q} \cap I = \varnothing. \end{gathered} \]</div>
+      <div class="sets" role="img" aria-label="Skaičių aibių schema: natūraliųjų skaičių aibė yra sveikųjų skaičių aibės dalis, sveikųjų – racionaliųjų; racionalieji ir iracionalieji skaičiai neturi bendrų elementų ir kartu sudaro realiųjų skaičių aibę.">
+        <div class="set set-R">
+          <span class="set-lab">\(\mathbb{R}\) realieji</span>
+          <div class="set-row">
+            <div class="set set-Q">
+              <span class="set-lab">\(\mathbb{Q}\) racionalieji</span>
+              <div class="set set-Z">
+                <span class="set-lab">\(\mathbb{Z}\) sveikieji</span>
+                <div class="set set-N">
+                  <span class="set-lab">\(\mathbb{N}\) natūralieji</span>
+                  <span class="set-ex">\(1;\ 2;\ 3;\ \ldots\)</span>
+                </div>
+                <span class="set-ex">\(-8;\ 0\)</span>
+              </div>
+              <span class="set-ex">\(\frac{3}{4};\ -\frac{7}{2};\ 0{,}25\)</span>
+            </div>
+            <div class="set set-I">
+              <span class="set-lab">\(I\) iracionalieji</span>
+              <span class="set-ex">\(\sqrt{2};\ \sqrt{5};\ \pi\)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>Tas pats skaičius gali priklausyti kelioms aibėms. Kiekvienas natūralusis skaičius yra ir sveikasis, racionalusis bei realusis. Realusis skaičius yra arba racionalusis, arba iracionalusis; abiem šioms aibėms kartu jis nepriklauso.</p>
+    </article>
+
+    <article class="card concept" id="reiksme">
+      <div class="concept-head"><span class="num">9</span><h3>Skaičiaus reikšmė ir aibė</h3></div>
+      <p>Aibę nustatome pagal <strong>skaičiaus reikšmę</strong>, todėl pirmiausia apskaičiuojame arba suprastiname reiškinį. Pavyzdžiui, \(\sqrt{25} = 5 \in \mathbb{N}\), \(0{,}75 = \frac{3}{4} \in \mathbb{Q}\), o \(\sqrt{7} \in I\). Vien šaknies ar trupmenos ženklas skaičių aibės nenusako.</p>
+      <p class="tip"><strong>Svarbu.</strong> \(\sqrt{-4}\) neturi reikšmės realiųjų skaičių aibėje, o \(\frac{1}{0}\) yra neapibrėžtas reiškinys. Nė vieno jų nepriskiriame iracionaliesiems skaičiams. Simboliai \(-\infty\) ir \(+\infty\) taip pat nėra realieji skaičiai.</p>
+    </article>
+  </section>
+
+  <!-- ============ INTERVALAI IR SKAIČIŲ TIESĖ ============ -->
+  <section class="section" id="intervalai" aria-labelledby="h-int">
+    <h2 id="h-int">Intervalai ir skaičių tiesė</h2>
+
+    <article class="card concept" id="intervalu-zymejimas">
+      <div class="concept-head"><span class="num">10</span><h3>Intervalų žymėjimas</h3></div>
+      <p>Intervalas aprašo skaičių tiesės dalį. <strong>Pilnas taškas</strong> ir laužtinis skliaustas reiškia, kad galas įtrauktas; <strong>tuščias taškas</strong> ir apvalusis skliaustas – kad neįtrauktas. Mėlyna linija žymi intervalo skaičius. Mėlyna rodyklė rodo, kad intervalas tęsiasi be galo; prie begalybės visada rašomas apvalusis skliaustas.</p>
+      <div class="tbl-wrap">
+        <table class="vtable ivl-tbl">
+          <thead><tr><th>Intervalas</th><th>Sąlyga</th><th>Skaičių tiesė</th></tr></thead>
+          <tbody>
+            <tr><td>\((-2; 3)\)</td><td>\(-2 &lt; x &lt; 3\)</td><td class="ivl-nl"><div data-widget="number-line" data-spec='{"min":-3.5,"max":4.5,"v":"x","ticks":[-2,0,3],"rows":[{"segs":[{"a":-2,"b":3,"ai":false,"bi":false}]}],"aria":"Intervalas nuo −2 iki 3, abu galai neįtraukti"}'></div></td></tr>
+            <tr><td>\([-2; 3]\)</td><td>\(-2 \leq x \leq 3\)</td><td class="ivl-nl"><div data-widget="number-line" data-spec='{"min":-3.5,"max":4.5,"v":"x","ticks":[-2,0,3],"rows":[{"segs":[{"a":-2,"b":3,"ai":true,"bi":true}]}],"aria":"Intervalas nuo −2 iki 3, abu galai įtraukti"}'></div></td></tr>
+            <tr><td>\([-2; 3)\)</td><td>\(-2 \leq x &lt; 3\)</td><td class="ivl-nl"><div data-widget="number-line" data-spec='{"min":-3.5,"max":4.5,"v":"x","ticks":[-2,0,3],"rows":[{"segs":[{"a":-2,"b":3,"ai":true,"bi":false}]}],"aria":"Intervalas nuo −2 iki 3, galas −2 įtrauktas, galas 3 neįtrauktas"}'></div></td></tr>
+            <tr><td>\((-2; 3]\)</td><td>\(-2 &lt; x \leq 3\)</td><td class="ivl-nl"><div data-widget="number-line" data-spec='{"min":-3.5,"max":4.5,"v":"x","ticks":[-2,0,3],"rows":[{"segs":[{"a":-2,"b":3,"ai":false,"bi":true}]}],"aria":"Intervalas nuo −2 iki 3, galas −2 neįtrauktas, galas 3 įtrauktas"}'></div></td></tr>
+            <tr><td>\([-2; +\infty)\)</td><td>\(x \geq -2\)</td><td class="ivl-nl"><div data-widget="number-line" data-spec='{"min":-3.5,"max":4.5,"v":"x","ticks":[-2,0,3],"rows":[{"segs":[{"a":-2,"b":null,"ai":true}]}],"aria":"Intervalas nuo −2 įskaitytinai iki plius begalybės"}'></div></td></tr>
+            <tr><td>\((-\infty; 3)\)</td><td>\(x &lt; 3\)</td><td class="ivl-nl"><div data-widget="number-line" data-spec='{"min":-3.5,"max":4.5,"v":"x","ticks":[-2,0,3],"rows":[{"segs":[{"a":null,"b":3,"bi":false}]}],"aria":"Intervalas nuo minus begalybės iki 3, galas 3 neįtrauktas"}'></div></td></tr>
+            <tr><td>\([2; 2] = \{2\}\)</td><td>\(x = 2\)</td><td class="ivl-nl"><div data-widget="number-line" data-spec='{"min":-3.5,"max":4.5,"v":"x","ticks":[0,2,3],"rows":[{"pts":[{"x":2}]}],"aria":"Vienas skaičius 2"}'></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:12px">Visą skaičių tiesę užrašome \(\mathbb{R} = (-\infty; +\infty)\). Intervalas apima visus jo sąlygą tenkinančius realiuosius skaičius, ne tik sveikuosius. Užrašas \([-1; 2] \cap \mathbb{Z}\) jau atrenka tik tame intervale esančius sveikuosius skaičius.</p>
+      <p>Kai abu įtraukti galai sutampa, lieka vienas skaičius – tai paskutinė lentelės eilutė.</p>
+    </article>
+  </section>
+
+  <!-- ============ UŽDAVINIŲ SPRENDIMO PAVYZDŽIAI ============ -->
+  <section class="section" id="pavyzdziai" aria-labelledby="h-ex">
+    <h2 id="h-ex">Uždavinių sprendimo pavyzdžiai</h2>
+    <p class="section-intro">Kai prašoma nurodyti mažiausią aibę, renkamės iš \(\mathbb{N}\), \(\mathbb{Z}\), \(\mathbb{Q}\), \(I\) ir \(\mathbb{R}\). Kai prašoma visų aibių, nurodome visas iš šio sąrašo, kurioms priklauso skaičius.</p>
+
+    <!-- 1 pavyzdys -->
+    <article class="card example" id="pavyzdys-1">
+      <header class="example-head">
+        <span class="example-tag">1 pavyzdys</span>
+        <h3>Skaičių priskyrimas aibėms</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Nurodykite mažiausią ir visas tinkamas aibes skaičiams \(6\), \(-4\), \(0\), \(\frac{3}{5}\), \(\sqrt{16}\) ir \(\sqrt{3}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Skaičiaus reikšmė ir tipas</span></h4>
+          <p>Pirmiausia nustatome skaičiaus reikšmę ir tipą, tada pasinaudojame aibių įtraukimo ryšiais.</p>
+          <div class="tbl-wrap">
+            <table class="vtable tl">
+              <thead><tr><th>Skaičius</th><th>Paaiškinimas</th></tr></thead>
+              <tbody>
+                <tr><td>\(6\)</td><td>Teigiamas sveikasis skaičius.</td></tr>
+                <tr><td>\(-4\)</td><td>Neigiamas sveikasis skaičius.</td></tr>
+                <tr><td>\(0\)</td><td>Sveikasis, bet ne natūralusis.</td></tr>
+                <tr><td>\(\frac{3}{5}\)</td><td>Sveikųjų skaičių dalmuo, nelygus sveikajam.</td></tr>
+                <tr><td>\(\sqrt{16}\)</td><td>\(\sqrt{16} = 4\), todėl skaičius natūralusis.</td></tr>
+                <tr><td>\(\sqrt{3}\)</td><td>Nėra sveikųjų skaičių dalmuo.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <div class="tbl-wrap">
+              <table class="vtable tl">
+                <thead><tr><th>Skaičius</th><th>Mažiausia aibė</th><th>Visos aibės</th></tr></thead>
+                <tbody>
+                  <tr><td>\(6\)</td><td>\(\mathbb{N}\)</td><td>\(\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}\)</td></tr>
+                  <tr><td>\(-4\)</td><td>\(\mathbb{Z}\)</td><td>\(\mathbb{Z}, \mathbb{Q}, \mathbb{R}\)</td></tr>
+                  <tr><td>\(0\)</td><td>\(\mathbb{Z}\)</td><td>\(\mathbb{Z}, \mathbb{Q}, \mathbb{R}\)</td></tr>
+                  <tr><td>\(\frac{3}{5}\)</td><td>\(\mathbb{Q}\)</td><td>\(\mathbb{Q}, \mathbb{R}\)</td></tr>
+                  <tr><td>\(\sqrt{16}\)</td><td>\(\mathbb{N}\)</td><td>\(\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}\)</td></tr>
+                  <tr><td>\(\sqrt{3}\)</td><td>\(I\)</td><td>\(I, \mathbb{R}\)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 2 pavyzdys -->
+    <article class="card example" id="pavyzdys-2">
+      <header class="example-head">
+        <span class="example-tag">2 pavyzdys</span>
+        <h3>Teiginio patikrinimas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Ar teisingas teiginys „Kiekvienas racionalusis skaičius yra sveikasis“? Paaiškinkite.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Priešingas pavyzdys</span></h4>
+          <p>Kad paneigtume teiginį apie visus skaičius, pakanka vieno priešingo pavyzdžio. Skaičius \(\frac{1}{2}\) yra racionalusis, nes tai sveikųjų skaičių dalmuo, tačiau jis nėra sveikasis.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>Todėl teiginys <strong>neteisingas</strong>. Atvirkštinis teiginys teisingas: kiekvienas sveikasis skaičius yra racionalusis, nes \(n = \frac{n}{1}\).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 3 pavyzdys -->
+    <article class="card example" id="pavyzdys-3">
+      <header class="example-head">
+        <span class="example-tag">3 pavyzdys</span>
+        <h3>Baigtinės trupmenos keitimas paprastąja</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Užrašykite \(-1{,}25\) paprastąja trupmena ir nurodykite mažiausią tinkamą aibę.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Paprastoji trupmena</span></h4>
+          <p>Po kablelio yra du skaitmenys, todėl skaičių iš pradžių užrašome šimtosiomis. Tada skaitiklį ir vardiklį padalijame iš jų bendro daliklio \(25\).</p>
+          \[ -1{,}25 = -\frac{125}{100} = -\frac{5}{4}. \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Mažiausia aibė</span></h4>
+          <p>Gavome sveikųjų skaičių dalmenį, kurio vardiklis nelygus nuliui. Šis skaičius nėra sveikasis, todėl mažiausia tinkama aibė yra \(\mathbb{Q}\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ -1{,}25 = -\frac{5}{4} \in \mathbb{Q} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 4 pavyzdys -->
+    <article class="card example" id="pavyzdys-4">
+      <header class="example-head">
+        <span class="example-tag">4 pavyzdys</span>
+        <h3>Periodinės trupmenos keitimas paprastąja</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Užrašykite \(0{,}(4)\) paprastąja trupmena.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Trupmenos žymėjimas ir daugyba</span></h4>
+          <p>Pažymime trupmeną raide \(x\). Periodą sudaro vienas skaitmuo, todėl padauginame iš \(10\):</p>
+          \[ x = 0{,}444\ldots, \qquad 10x = 4{,}444\ldots \]
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Lygybių atimtis</span></h4>
+          <p>Iš antrosios lygybės atimame pirmąją. Vienodos begalinės periodinės dalys susiprastina:</p>
+          \[ \begin{aligned} 10x - x &amp;= 4{,}444\ldots - 0{,}444\ldots = 4, \\ 9x &amp;= 4, \\ x &amp;= \frac{4}{9}. \end{aligned} \]
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ 0{,}(4) = \frac{4}{9} \in \mathbb{Q} \]
+            <p>Begalinis dešimtainis užrašas nebūtinai reiškia iracionalųjį skaičių.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 5 pavyzdys -->
+    <article class="card example" id="pavyzdys-5">
+      <header class="example-head">
+        <span class="example-tag">5 pavyzdys</span>
+        <h3>Reiškinio reikšmė ir skaičių aibė</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Nurodykite mažiausią aibę, kuriai priklauso: a)&nbsp;\(\frac{\sqrt{49}}{7}\); b)&nbsp;\(\sqrt{8}\); c)&nbsp;\(\sqrt{2} \cdot \sqrt{2}\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>a) Šaknis ir dalmuo</span></h4>
+          <p>Apskaičiuojame šaknį ir dalmenį: \(\frac{\sqrt{49}}{7} = \frac{7}{7} = 1\). Vadinasi, reikšmė priklauso \(\mathbb{N}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>b) Kvadratinė šaknis iš 8</span></h4>
+          <p>Skaičius \(8\) yra neneigiamas sveikasis skaičius, bet nėra jokio sveikojo skaičiaus kvadratas. Todėl \(\sqrt{8}\) yra iracionalusis skaičius; mažiausia tinkama aibė – \(I\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>c) Šaknų sandauga</span></h4>
+          <p>Apskaičiuojame sandaugą: \(\sqrt{2} \cdot \sqrt{2} = 2\). Vadinasi, reikšmė priklauso \(\mathbb{N}\). Nors abu dauginamieji iracionalieji, jų sandauga gali būti racionalioji.</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>a)&nbsp;\(\mathbb{N}\); b)&nbsp;\(I\); c)&nbsp;\(\mathbb{N}\).</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 6 pavyzdys -->
+    <article class="card example" id="pavyzdys-6">
+      <header class="example-head">
+        <span class="example-tag">6 pavyzdys</span>
+        <h3>Sveikųjų skaičių atranka</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Išvardykite visus sveikuosius skaičius, tenkinančius sąlygą \(-2 &lt; x \leq 3\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Intervalo galai</span></h4>
+          <p>Ieškome tik sveikųjų skaičių. Kairysis galas \(-2\) neįtrauktas, todėl pirmasis tinkamas sveikasis skaičius yra \(-1\). Dešinysis galas \(3\) įtrauktas.</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sveikieji skaičiai intervale</span></h4>
+          <p>Iš eilės išvardijame visus tinkamus skaičius:</p>
+          \[ (-2; 3] \cap \mathbb{Z} = \{-1; 0; 1; 2; 3\}. \]
+          <div data-widget="number-line" data-spec='{"min":-3,"max":4,"v":"x","ticks":[-2,-1,0,1,2,3],"rows":[{"lab":"(-2; 3]","segs":[{"a":-2,"b":3,"ai":false,"bi":true}]},{"lab":"(-2; 3] \\cap \\mathbb{Z}","pts":[{"x":-1},{"x":0},{"x":1},{"x":2},{"x":3}]}],"aria":"Intervalas nuo −2 (neįtrauktas) iki 3 (įtrauktas) ir jame esantys sveikieji skaičiai −1, 0, 1, 2, 3"}'></div>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            <p>\(-1\), \(0\), \(1\), \(2\), \(3\). Jei būtų prašoma realiųjų skaičių, jų šiame intervale būtų be galo daug ir jų neišvardytume.</p>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 7 pavyzdys -->
+    <article class="card example" id="pavyzdys-7">
+      <header class="example-head">
+        <span class="example-tag">7 pavyzdys</span>
+        <h3>Baigtinių aibių sankirta, sąjunga ir skirtumas</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Duotos aibės \(A = \{-1; 0; 2; 4\}\) ir \(B = \{0; 1; 2\}\). Raskite \(A \cap B\), \(A \cup B\) ir \(A \setminus B\).
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sankirta</span></h4>
+          <p><strong>Sankirtai</strong> atrenkame elementus, esančius abiejose aibėse. Tai \(0\) ir \(2\): \(A \cap B = \{0; 2\}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sąjunga</span></h4>
+          <p><strong>Sąjungai</strong> surašome visus elementus iš abiejų aibių, nesikartodami: \(A \cup B = \{-1; 0; 1; 2; 4\}\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">3</span><span>Skirtumas</span></h4>
+          <p><strong>Skirtumui</strong> iš pirmosios aibės pašaliname elementus, esančius antrojoje. Iš \(A\) pašalinus \(0\) ir \(2\), lieka: \(A \setminus B = \{-1; 4\}\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ \begin{aligned} A \cap B &amp;= \{0; 2\}, \\ A \cup B &amp;= \{-1; 0; 1; 2; 4\}, \\ A \setminus B &amp;= \{-1; 4\}. \end{aligned} \]
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <!-- 8 pavyzdys -->
+    <article class="card example" id="pavyzdys-8">
+      <header class="example-head">
+        <span class="example-tag">8 pavyzdys</span>
+        <h3>Intervalų sankirta ir sąjunga</h3>
+      </header>
+      <div class="problem">
+        <span class="label">Sąlyga</span>
+        Duoti intervalai \(A = [-2; 3)\) ir \(B = (1; 5]\). Raskite jų sankirtą ir sąjungą.
+      </div>
+      <div class="steps">
+        <section class="step">
+          <h4><span class="step-no">1</span><span>Sankirta</span></h4>
+          <p>Sankirtai skaičius turi tenkinti abiejų intervalų sąlygas. Bendroji dalis prasideda už \(1\) ir baigiasi prieš \(3\). Skaičiaus \(1\) neįtraukia \(B\), o skaičiaus \(3\) neįtraukia \(A\), todėl: \(A \cap B = (1; 3)\).</p>
+        </section>
+        <section class="step">
+          <h4><span class="step-no">2</span><span>Sąjunga</span></h4>
+          <p>Sąjungai pakanka priklausyti bent vienam intervalui. Intervalai persidengia, todėl kartu užpildo visą dalį nuo \(-2\) iki \(5\). Abu išoriniai galai priklauso bent vienam intervalui: \(A \cup B = [-2; 5]\).</p>
+        </section>
+        <section class="step step--answer">
+          <div class="answer-box">
+            <span class="label">Atsakymas</span>
+            \[ A \cap B = (1; 3), \qquad A \cup B = [-2; 5] \]
+            <div data-widget="number-line" data-spec='{"min":-3,"max":6,"ticks":[-2,0,1,3,5],"rows":[{"lab":"A = [-2; 3)","segs":[{"a":-2,"b":3,"ai":true,"bi":false}]},{"lab":"B = (1; 5]","segs":[{"a":1,"b":5,"ai":false,"bi":true}]},{"lab":"A \\cap B = (1; 3)","segs":[{"a":1,"b":3,"ai":false,"bi":false}]},{"lab":"A \\cup B = [-2; 5]","segs":[{"a":-2,"b":5,"ai":true,"bi":true}]}],"aria":"Intervalai A nuo −2 iki 3, B nuo 1 iki 5, jų sankirta nuo 1 iki 3 ir sąjunga nuo −2 iki 5"}'></div>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ UŽDAVINIAI SAVARANKIŠKAM DARBUI ============ -->
+  <section class="section" id="savarankiskai" aria-labelledby="h-self">
+    <h2 id="h-self">Uždaviniai savarankiškam darbui</h2>
+    <p class="section-intro">Spręskite savarankiškai. Natūraliųjų skaičių aibė šiame tinklapyje prasideda nuo \(1\). Atsakymą pamatysite paspaudę „Rodyti atsakymą“; sprendimo žingsniai nepateikiami.</p>
+
+    <div class="quiz" data-numbering="task">
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Nurodykite mažiausią tinkamą aibę iš \(\mathbb{N}\), \(\mathbb{Z}\), \(\mathbb{Q}\), \(I\), \(\mathbb{R}\):</p>
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(12\)</li><li><span class="abc-l">b)</span>\(-7\)</li><li><span class="abc-l">c)</span>\(0\)</li><li><span class="abc-l">d)</span>\(\frac{3}{8}\)</li>
+            <li><span class="abc-l">e)</span>\(\sqrt{36}\)</li><li><span class="abc-l">f)</span>\(\sqrt{3}\)</li><li><span class="abc-l">g)</span>\(0{,}6\)</li><li><span class="abc-l">h)</span>\(0{,}(27)\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(\mathbb{N}\)</li><li><span class="abc-l">b)</span>\(\mathbb{Z}\)</li><li><span class="abc-l">c)</span>\(\mathbb{Z}\)</li><li><span class="abc-l">d)</span>\(\mathbb{Q}\)</li>
+            <li><span class="abc-l">e)</span>\(\mathbb{N}\)</li><li><span class="abc-l">f)</span>\(I\)</li><li><span class="abc-l">g)</span>\(\mathbb{Q}\)</li><li><span class="abc-l">h)</span>\(\mathbb{Q}\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Nurodykite visas aibes iš \(\mathbb{N}\), \(\mathbb{Z}\), \(\mathbb{Q}\), \(I\), \(\mathbb{R}\), kurioms priklauso:</p>
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(4\)</li><li><span class="abc-l">b)</span>\(-2\)</li><li><span class="abc-l">c)</span>\(0\)</li><li><span class="abc-l">d)</span>\(-1{,}25\)</li><li><span class="abc-l">e)</span>\(\sqrt{7}\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc abc--wide">
+            <li><span class="abc-l">a)</span>\(\mathbb{N},\ \mathbb{Z},\ \mathbb{Q},\ \mathbb{R}\)</li><li><span class="abc-l">b)</span>\(\mathbb{Z},\ \mathbb{Q},\ \mathbb{R}\)</li><li><span class="abc-l">c)</span>\(\mathbb{Z},\ \mathbb{Q},\ \mathbb{R}\)</li><li><span class="abc-l">d)</span>\(\mathbb{Q},\ \mathbb{R}\)</li><li><span class="abc-l">e)</span>\(I,\ \mathbb{R}\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Vietoje daugtaškio įrašykite \(\in\) arba \(\notin\):</p>
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(0 \ldots \mathbb{N}\)</li><li><span class="abc-l">b)</span>\(-8 \ldots \mathbb{Z}\)</li><li><span class="abc-l">c)</span>\(\frac{1}{3} \ldots \mathbb{Q}\)</li>
+            <li><span class="abc-l">d)</span>\(\sqrt{10} \ldots \mathbb{Q}\)</li><li><span class="abc-l">e)</span>\(\pi \ldots \mathbb{R}\)</li><li><span class="abc-l">f)</span>\(\sqrt{49} \ldots \mathbb{N}\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(\notin\)</li><li><span class="abc-l">b)</span>\(\in\)</li><li><span class="abc-l">c)</span>\(\in\)</li>
+            <li><span class="abc-l">d)</span>\(\notin\)</li><li><span class="abc-l">e)</span>\(\in\)</li><li><span class="abc-l">f)</span>\(\in\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Nurodykite, kurie teiginiai teisingi, o kurie klaidingi:</p>
+          <ul class="abc abc--1">
+            <li><span class="abc-l">a)</span>kiekvienas sveikasis skaičius yra natūralusis;</li>
+            <li><span class="abc-l">b)</span>kiekvienas racionalusis skaičius yra realusis;</li>
+            <li><span class="abc-l">c)</span>iracionalusis skaičius gali būti racionalusis;</li>
+            <li><span class="abc-l">d)</span>nulis yra sveikasis skaičius;</li>
+            <li><span class="abc-l">e)</span>kiekviena kvadratinė šaknis yra iracionalusis skaičius;</li>
+            <li><span class="abc-l">f)</span>kiekviena baigtinė dešimtainė trupmena yra racionalusis skaičius.</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>klaidingas</li><li><span class="abc-l">b)</span>teisingas</li><li><span class="abc-l">c)</span>klaidingas</li>
+            <li><span class="abc-l">d)</span>teisingas</li><li><span class="abc-l">e)</span>klaidingas</li><li><span class="abc-l">f)</span>teisingas</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Užrašykite nesuprastinamąja paprastąja trupmena:</p>
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(0{,}6\)</li><li><span class="abc-l">b)</span>\(-1{,}25\)</li><li><span class="abc-l">c)</span>\(0{,}08\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(\frac{3}{5}\)</li><li><span class="abc-l">b)</span>\(-\frac{5}{4}\)</li><li><span class="abc-l">c)</span>\(\frac{2}{25}\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Užrašykite nesuprastinamąja paprastąja trupmena:</p>
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(0{,}(2)\)</li><li><span class="abc-l">b)</span>\(0{,}(18)\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(\frac{2}{9}\)</li><li><span class="abc-l">b)</span>\(\frac{2}{11}\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Nustatykite, ar reikšmė racionalioji, ar iracionalioji:</p>
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(\sqrt{64}\)</li><li><span class="abc-l">b)</span>\(\sqrt{11}\)</li><li><span class="abc-l">c)</span>\(\frac{\sqrt{81}}{9}\)</li>
+            <li><span class="abc-l">d)</span>\(-\sqrt{25}\)</li><li><span class="abc-l">e)</span>\(\sqrt{2} \cdot \sqrt{2}\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>racionalioji</li><li><span class="abc-l">b)</span>iracionalioji</li><li><span class="abc-l">c)</span>racionalioji</li>
+            <li><span class="abc-l">d)</span>racionalioji</li><li><span class="abc-l">e)</span>racionalioji</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Išdėstykite didėjimo tvarka: \(\sqrt{4}\); \(-1{,}5\); \(\frac{2}{3}\); \(-\sqrt{9}\); \(0\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(-\sqrt{9} &lt; -1{,}5 &lt; 0 &lt; \frac{2}{3} &lt; \sqrt{4}\)</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Išvardykite visus sveikuosius skaičius, tenkinančius sąlygą \(-4 &lt; x \leq 2\).</p>
+        </div>
+        <div class="q-answer">
+          <p>\(\{-3; -2; -1; 0; 1; 2\}\)</p>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Išvardykite aibių elementus:</p>
+          <ul class="abc abc--wide">
+            <li><span class="abc-l">a)</span>\(A = \{x \in \mathbb{N} \mid x &lt; 5\}\)</li><li><span class="abc-l">b)</span>\(B = \{x \in \mathbb{Z} \mid -2 \leq x &lt; 3\}\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc abc--wide">
+            <li><span class="abc-l">a)</span>\(A = \{1; 2; 3; 4\}\)</li><li><span class="abc-l">b)</span>\(B = \{-2; -1; 0; 1; 2\}\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Užrašykite intervalu šias realiųjų skaičių aibes:</p>
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(-2 \leq x &lt; 5\)</li><li><span class="abc-l">b)</span>\(x &gt; 3\)</li><li><span class="abc-l">c)</span>\(x \leq 0\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\([-2; 5)\)</li><li><span class="abc-l">b)</span>\((3; +\infty)\)</li><li><span class="abc-l">c)</span>\((-\infty; 0]\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Išvardykite visus sveikuosius skaičius, priklausančius:</p>
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\([-1; 3)\)</li><li><span class="abc-l">b)</span>\((-3; 1]\)</li><li><span class="abc-l">c)</span>\([2; 2]\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc abc--wide">
+            <li><span class="abc-l">a)</span>\(\{-1; 0; 1; 2\}\)</li><li><span class="abc-l">b)</span>\(\{-2; -1; 0; 1\}\)</li><li><span class="abc-l">c)</span>\(\{2\}\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Duotos aibės \(A = \{-2; 0; 2; 4\}\) ir \(B = \{0; 1; 2; 3\}\). Raskite:</p>
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(A \cap B\)</li><li><span class="abc-l">b)</span>\(A \cup B\)</li><li><span class="abc-l">c)</span>\(A \setminus B\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc abc--wide">
+            <li><span class="abc-l">a)</span>\(\{0; 2\}\)</li><li><span class="abc-l">b)</span>\(\{-2; 0; 1; 2; 3; 4\}\)</li><li><span class="abc-l">c)</span>\(\{-2; 4\}\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Duoti intervalai \(A = [0; 4]\) ir \(B = (2; 6)\). Raskite:</p>
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(A \cap B\)</li><li><span class="abc-l">b)</span>\(A \cup B\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\((2; 4]\)</li><li><span class="abc-l">b)</span>\([0; 6)\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Duoti intervalai \(A = (-\infty; 1)\) ir \(B = [1; +\infty)\). Raskite:</p>
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(A \cap B\)</li><li><span class="abc-l">b)</span>\(A \cup B\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(\varnothing\)</li><li><span class="abc-l">b)</span>\(\mathbb{R}\)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card q" data-type="open">
+        <div class="q-text">
+          <p>Apskaičiuokite, jei įmanoma, ir nurodykite mažiausią tinkamą skaičių aibę:</p>
+          <ul class="abc">
+            <li><span class="abc-l">a)</span>\(\sqrt{0}\)</li><li><span class="abc-l">b)</span>\(-\frac{6}{3}\)</li><li><span class="abc-l">c)</span>\(\sqrt{-9}\)</li><li><span class="abc-l">d)</span>\(\frac{5}{0}\)</li>
+          </ul>
+        </div>
+        <div class="q-answer">
+          <ul class="abc abc--wide">
+            <li><span class="abc-l">a)</span>\(0\), aibė \(\mathbb{Z}\)</li><li><span class="abc-l">b)</span>\(-2\), aibė \(\mathbb{Z}\)</li><li><span class="abc-l">c)</span>realiosios reikšmės nėra</li><li><span class="abc-l">d)</span>reiškinys neapibrėžtas</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ ŠALTINIAI ============ -->
+  <section class="section sources" aria-labelledby="h-src">
+    <h2 id="h-src">Šaltiniai</h2>
+    <p class="section-intro">Daugiau informacijos apie šią temą rasite:</p>
+    <ul class="src-list">
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Pekarskas. <cite>Matematika: kurso kartojimo medžiaga</cite>. Kaunas, Šviesa, 2004.<span class="src-ch">1.1–1.3 skyriai, p. 7–11</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 5th ed. Brooks/Cole, Cengage Learning, 2010.<span class="src-ch">1.1 skyrius, p. 2–3</span></span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">S. T. Tan. <cite>Applied Mathematics for the Managerial, Life, and Social Sciences</cite>. 3rd ed. Thomson Brooks/Cole, Thomson Learning, 2004.</span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Mockus. <cite>Naujausioji matematikos atmintinė moksleiviams</cite>. Šiauliai, V. Mockaus įmonė, 2014.</span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">V. Dabrišienė. <cite>Matematika. Uždavinynas XI–XII klasei</cite>. Šviesa, 2012.</span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">K. Intienė, V. Meškauskaitė, Ž. Stundžienė. <cite>Matematika tau plius 12 klasė. Kurso kartojimo medžiaga</cite>. Vilnius, TEV, 2014.</span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">M. Vygodskis. <cite>Elementarinės matematikos žinynas</cite>. Kaunas, Valstybinė pedagoginės literatūros leidykla, 1959.</span></li>
+      <li><span class="src-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4.3 7.5 4 10 5.5V20c-2.5-1.5-6-1.2-8 0z"/><path d="M22 5.5C20 4.3 16.5 4 14 5.5V20c2.5-1.5 6-1.2 8 0z"/><path d="M10 5.5c.7-.4 1.3-.6 2-.6s1.3.2 2 .6"/></svg></span><span class="src-body">I. Jacques. <cite>Mathematics for Economics and Business</cite>. Harlow, Pearson, 2018.</span></li>
+    </ul>
+  </section>
+
+  <nav id="pager" class="pager" aria-label="Puslapiai"></nav>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

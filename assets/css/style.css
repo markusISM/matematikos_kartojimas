@@ -1090,3 +1090,83 @@ ul.gu li { margin: 0; padding: 6px 10px; border-radius: 8px; background: var(--s
 @media (max-width: 480px) {
   .brand .brand-text { white-space: normal; line-height: 1.15; font-size: .9rem; }
 }
+
+/* Skaičių tiesė (number-line): intervalai, pilni ir tušti taškai, rodyklės į begalybę */
+.nline { --nl: var(--chart-2); --nl-ax: color-mix(in srgb, var(--muted) 70%, transparent);
+  display: grid; grid-template-columns: 1fr; row-gap: 4px; max-width: 520px; margin: 12px auto 4px; }
+.nline--lab { grid-template-columns: max-content 1fr; column-gap: 14px; }
+.nl-lab { white-space: nowrap; font-size: .98rem; line-height: 1.2; padding-top: 6px; }
+.nl-track { position: relative; height: 44px; margin: 0 14px; }
+.nl-axis { position: absolute; left: -14px; right: -14px; top: 14px; height: 1.5px; background: var(--nl-ax); }
+.nl-axis::after { content: ""; position: absolute; top: -4.25px; right: -2px; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 9px solid var(--nl-ax); }
+.nl-var { position: absolute; top: 20px; right: -15px; font-size: .95rem; line-height: 1.2; }
+.nl-tick { position: absolute; top: 9px; width: 1.5px; height: 11px; background: var(--nl-ax); transform: translateX(-50%); }
+.nl-tl { position: absolute; top: 21px; transform: translateX(-50%); font-size: .9rem; white-space: nowrap; line-height: 1.2; }
+.nl-seg { position: absolute; top: 12.75px; height: 4px; border-radius: 2px; background: var(--nl); }
+.nl-seg.to-l::before, .nl-seg.to-r::after { content: ""; position: absolute; top: -5px; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+.nl-seg.to-l::before { left: -14px; border-right: 13px solid var(--nl); }
+.nl-seg.to-r::after { right: -14px; border-left: 13px solid var(--nl); }
+.nl-pt { position: absolute; top: 14.75px; width: 13px; height: 13px; border-radius: 50%; background: var(--nl); border: 2.5px solid var(--nl); transform: translate(-50%, -50%); }
+.nl-pt.open { background: var(--surface); }
+@media (max-width: 420px) {
+  .nline--lab { grid-template-columns: 1fr; }
+  .nl-lab { padding-top: 4px; }
+}
+
+/* Intervalų lentelė su skaičių tiesėmis */
+.ivl-tbl { width: 100%; }
+.ivl-tbl th, .ivl-tbl td { text-align: left; vertical-align: middle; }
+.ivl-tbl td.ivl-nl { width: 52%; padding: 0 6px; }
+.ivl-tbl .nline { margin: 2px 0 0; }
+/* Siaurame ekrane skaičių tiesė perkeliama po intervalu ir sąlyga – per visą lentelės plotį */
+@media (max-width: 560px) {
+  .ivl-tbl, .ivl-tbl thead, .ivl-tbl tbody { display: block; }
+  .ivl-tbl tr { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-top: 0; }
+  .ivl-tbl thead tr { border-top: 1px solid var(--border); background: var(--surface-2); }
+  .ivl-tbl th, .ivl-tbl td { border: 0; padding: 7px 10px 2px; }
+  .ivl-tbl thead th { padding-bottom: 7px; }
+  .ivl-tbl thead th:nth-child(3) { display: none; }
+  .ivl-tbl td.ivl-nl { grid-column: 1 / -1; width: auto; padding: 0 10px 2px; }
+}
+
+/* Lentelė su tekstu: visi stulpeliai lygiuojami į kairę */
+.vtable.tl th, .vtable.tl td { text-align: left; vertical-align: middle; }
+@media (max-width: 440px) { .vtable.tl th, .vtable.tl td { padding: 5px 8px; } }
+
+/* Skaičių aibių schema (įdėtos aibės) */
+.sets { max-width: 520px; margin: 14px auto 8px; }
+.set { position: relative; border: 2px solid var(--sc); border-radius: 14px; padding: 8px 10px 10px;
+  background: color-mix(in srgb, var(--sc) 7%, var(--surface)); }
+.set-lab { display: block; font-size: .86rem; font-weight: 650; line-height: 1.25; color: var(--text); margin-bottom: 6px; }
+.set-lab .katex { font-size: 1.15em; margin-right: 4px; }
+.set-ex { display: block; font-size: .95rem; margin-top: 6px; color: var(--muted); }
+.set-ex .katex { color: var(--text); }
+.set-row { display: flex; gap: 10px; align-items: stretch; }
+.set-R { --sc: var(--muted); background: var(--surface-2); }
+.set-Q { --sc: var(--chart-2); flex: 2.3; min-width: 0; }
+.set-Z { --sc: var(--chart); }
+.set-N { --sc: var(--chart-3); }
+.set-I { --sc: var(--exam); flex: 1; min-width: 0; }
+@media (max-width: 440px) {
+  .set { padding: 6px 7px 8px; border-radius: 12px; }
+  .set-row { gap: 7px; }
+  .set-lab { font-size: .8rem; }
+  .set-ex { font-size: .88rem; }
+}
+
+/* Aibių veiksmų schemos (Veno diagramos) */
+.venn3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0 6px; }
+.venn3 figure { margin: 0; padding: 6px 4px 8px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); text-align: center; }
+.venn3 svg { display: block; width: 100%; max-width: 150px; height: auto; margin: 0 auto; }
+.venn3 figcaption { font-size: .95rem; margin-top: 2px; }
+.vn-fill { fill: color-mix(in srgb, var(--chart-2) 38%, var(--surface-2)); }
+.vn-bg { fill: var(--surface-2); }
+.vn-c { fill: none; stroke: var(--text); stroke-width: 1.6; }
+.vn-l { font-family: KaTeX_Math, "Times New Roman", serif; font-style: italic; font-size: 15px; fill: var(--text); }
+
+/* Užduoties dalys a), b), c)… */
+ul.abc { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 6px 18px; }
+ul.abc li { margin: 0; }
+ul.abc.abc--wide { grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); }
+ul.abc.abc--1 { grid-template-columns: 1fr; }
+.abc-l { display: inline-block; min-width: 1.6em; font-weight: 650; color: var(--muted); }

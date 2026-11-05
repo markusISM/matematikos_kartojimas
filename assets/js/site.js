@@ -187,7 +187,7 @@
      kai jis sukuriamas. Angliški temų pavadinimai – laikini, tikslinami rengiant anglišką versiją.
      ------------------------------------------------------------------ */
   var COURSE = [
-    { id: 't1', num: 1, status: 'soon', title: { lt: 'Realieji skaičiai', en: 'Real Numbers' } },
+    { id: 't1', num: 1, status: 'active', href: { lt: 'tema-1.html', en: null }, title: { lt: 'Skaičių aibės ir intervalai', en: 'Number Sets and Intervals' } },
     { id: 't2', num: 2, status: 'soon', title: { lt: 'Procentai', en: 'Percentages' } },
     { id: 't3', num: 3, status: 'soon', title: { lt: 'Aritmetinė ir geometrinė progresijos', en: 'Arithmetic and Geometric Progressions' } },
     { id: 't4', num: 4, status: 'soon', title: { lt: 'Reiškinių pertvarkymai', en: 'Transforming Expressions' } },
@@ -210,10 +210,9 @@
   /* Puslapiai: failo vardas kiekviena kalba ir tėvinis puslapis (kelio juostai).
      Kai sukursite anglišką puslapį, įrašykite jo failo vardą į href.en. */
   var PAGES = {
-    home:    { href: { lt: 'index.html', en: 'index.html' } }
-    /* Temos puslapio pavyzdys:
-    t1:      { parent: 'home', href: { lt: 'tema-1.html', en: null },
-               title: { lt: '1 tema', en: 'Topic 1' } } */
+    home:    { href: { lt: 'index.html', en: 'index.html' } },
+    t1:     { parent: 'home', href: { lt: 'tema-1.html', en: null },
+               title: { lt: '1 tema', en: 'Topic 1' } }
   };
 
   /* ------------------------------------------------------------------
@@ -1165,6 +1164,55 @@
   }
 
   /* ------------------------------------------------------------------
+     8d. SKAIČIŲ TIESĖ (number-line)
+     <div data-widget="number-line" data-spec='{...}'></div>
+     spec: min, max – rodoma tiesės dalis (taškai išdėstomi pagal mastelį);
+           ticks – padalos su užrašais: skaičiai arba {"x": 2, "lab": "TeX"};
+           rows – viena ar kelios tiesės, kiekviena:
+             lab – užrašas kairėje (TeX, neprivalomas),
+             segs – intervalai [{a, b, ai, bi}]: a, b – galai (null – begalybė, piešiama rodyklė),
+                    ai, bi – ar galas įtrauktas (true – pilnas taškas, false – tuščias),
+             pts – atskiri taškai [{x, o: true – tuščias taškas}];
+           v – kintamojo raidė prie ašies rodyklės (TeX, neprivaloma; eilutėje galima nurodyti savo v);
+           aria – aprašas ekrano skaitytuvams.
+     Ašies rodyklė – tik dešinėje (skaičių didėjimo kryptimi).
+     Intervalų spalva – CSS kintamasis --nl (numatyta --chart-2, mėlyna).
+     ------------------------------------------------------------------ */
+  function initNumberLine(box) {
+    var spec;
+    try { spec = JSON.parse(box.getAttribute('data-spec')); } catch (e) { return; }
+    var min = spec.min, max = spec.max;
+    var P = function (x) { return +((x - min) / (max - min) * 100).toFixed(2); };
+    var num = function (v) { var s = String(v); return T.decimal === ',' ? s.replace('.', '{,}') : s; };
+    var ticks = (spec.ticks || []).map(function (t) { return typeof t === 'object' ? t : { x: t, lab: num(t) }; });
+    var rows = spec.rows || [];
+    var hasLab = rows.some(function (r) { return r.lab; });
+    var html = '';
+    rows.forEach(function (r) {
+      var v = r.v || spec.v;
+      var t = '<span class="nl-axis"></span>' + (v ? '<span class="nl-var">\\(' + v + '\\)</span>' : '');
+      ticks.forEach(function (k) {
+        t += '<span class="nl-tick" style="left:' + P(k.x) + '%"></span>' +
+          '<span class="nl-tl" style="left:' + P(k.x) + '%">\\(' + k.lab + '\\)</span>';
+      });
+      var dots = '';
+      (r.segs || []).forEach(function (s) {
+        var a = s.a == null ? 0 : P(s.a), b = s.b == null ? 100 : P(s.b);
+        t += '<span class="nl-seg' + (s.a == null ? ' to-l' : '') + (s.b == null ? ' to-r' : '') +
+          '" style="left:' + a + '%;width:' + (b - a) + '%"></span>';
+        if (s.a != null) dots += '<span class="nl-pt' + (s.ai ? '' : ' open') + '" style="left:' + a + '%"></span>';
+        if (s.b != null && s.b !== s.a) dots += '<span class="nl-pt' + (s.bi ? '' : ' open') + '" style="left:' + b + '%"></span>';
+      });
+      (r.pts || []).forEach(function (p) {
+        dots += '<span class="nl-pt' + (p.o ? ' open' : '') + '" style="left:' + P(p.x) + '%"></span>';
+      });
+      html += (hasLab ? '<div class="nl-lab">' + (r.lab ? '\\(' + r.lab + '\\)' : '') + '</div>' : '') +
+        '<div class="nl-track">' + t + dots + '</div>';
+    });
+    box.innerHTML = '<div class="nline' + (hasLab ? ' nline--lab' : '') + '" role="img" aria-label="' + esc(spec.aria || '') + '">' + html + '</div>';
+  }
+
+  /* ------------------------------------------------------------------
      9. FORMULĖS (KaTeX)
      Eilutėje: \( ... \)    Atskiroje eilutėje: \[ ... \]
      ------------------------------------------------------------------ */
@@ -1421,6 +1469,7 @@
     $all('[data-widget="means-chart"]').forEach(initMeansChart);
     $all('[data-widget="lp-chart"]').forEach(initLpChart);
     $all('[data-widget="sign-chart"]').forEach(initSignChart);
+    $all('[data-widget="number-line"]').forEach(initNumberLine);
     renderMath(document.body);
     $all('.example').forEach(initExample);
     $all('.quiz').forEach(function (qz) {

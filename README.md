@@ -33,7 +33,7 @@ Atnaujinimas: **Add file → Upload files** → nutempkite pakeistus failus (tai
 
 **Spalvos.** `assets/css/style.css` viršuje, `:root` bloke (`--accent` – pagrindinė tamsiai žalia). Tamsaus režimo spalvos – bloke `@media (prefers-color-scheme: dark)`.
 
-**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=1` ir `site.js?v=1`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją.
+**Versijos žyma.** Puslapiai stilių ir skriptą įkelia kaip `style.css?v=3` ir `site.js?v=3`. Pakeitus šiuos failus, padidinkite numerį visuose puslapiuose – tada naršyklės iškart įkels naują versiją.
 
 **Aktyvuoti temą.** Faile `assets/js/site.js`, skyriuje „2. TINKLAPIO STRUKTŪRA“: temai `COURSE` sąraše nustatykite `status: 'active'` ir `href: { lt: 'tema-1.html', en: null }`. Puslapį įrašykite į `PAGES` (nurodykite `parent: 'home'`, kad veiktų naršymo kelias ir mygtukas „Atgal“). Temos skyriai (jei jų bus) – `MODELS` sąraše.
 
@@ -89,6 +89,24 @@ Atnaujinimas: **Add file → Upload files** → nutempkite pakeistus failus (tai
 ```
 
 **Ženklų schema** (pvz., intervalų metodui; apostrofą rašykite `&#39;`): `<div data-widget="sign-chart" data-spec='{"fp":"f&#39;(x)","f":"f(x)","v":"x","pts":[{"x":"2","z":true}],"s":["-","+"],"outL":false,"outR":false}'></div>`.
+
+**Skaičių tiesė** (intervalai; spalva – mėlyna `--chart-2`):
+```html
+<div data-widget="number-line" data-spec='{"min":-3,"max":6,"ticks":[-2,0,1,3,5],
+  "rows":[{"lab":"A = [-2; 3)","segs":[{"a":-2,"b":3,"ai":true,"bi":false}]},
+          {"lab":"x \\geq 1","segs":[{"a":1,"b":null,"ai":true}]},
+          {"pts":[{"x":-1},{"x":0,"o":true}]}],
+  "aria":"Aprašas ekrano skaitytuvams"}'></div>
+```
+`min`, `max` – rodoma tiesės dalis (taškai išdėstomi pagal mastelį); `ticks` – padalos su užrašais (skaičius arba `{"x":2,"lab":"\\sqrt{2}"}`); `v` – kintamojo raidė prie ašies rodyklės (pvz., `"v":"x"`; ašies rodyklė – tik dešinėje, skaičių didėjimo kryptimi); kiekviena `rows` eilutė – atskira tiesė: `lab` – užrašas (TeX, neprivalomas), `segs` – intervalai (`a`/`b` – galai, `null` – begalybė ir rodyklė; `ai`/`bi` – galas įtrauktas: pilnas taškas, neįtrauktas: tuščias), `pts` – atskiri taškai (`"o":true` – tuščias). Užrašai telefone perkeliami virš tiesės.
+
+**Intervalų lentelė:** `<table class="vtable ivl-tbl">`, skaičių tiesės langelis – `<td class="ivl-nl">`; siaurame ekrane tiesė rodoma po intervalu per visą plotį.
+
+**Lentelė su tekstu:** `vtable tl` – visi stulpeliai lygiuojami į kairę.
+
+**Užduoties dalys a), b), c)…:** `<ul class="abc"><li><span class="abc-l">a)</span>\(12\)</li>…</ul>` (siauri elementai – keli stulpeliai); `abc abc--wide` – platesni elementai; `abc abc--1` – sakiniai, po vieną eilutėje.
+
+**Skaičių aibių schema** (`.sets`, `.set-R/Q/Z/N/I`) ir **aibių veiksmų schemos** (`.venn3` su trimis SVG) – 1 temos puslapyje.
 
 **Interaktyvus tiesės brėžinys:** `<div data-widget="line-explorer"></div>` (slankikliai \(m\) ir \(b\)).
 
